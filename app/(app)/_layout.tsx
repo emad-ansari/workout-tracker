@@ -1,16 +1,17 @@
 import { useAuth } from "@clerk/expo";
 import { Stack } from "expo-router";
 import React from "react";
-import { View, ActivityIndicator } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 
 export default function Layout() {
 	const { isLoaded, isSignedIn, userId, sessionId, getToken } = useAuth();
-	console.log("USER_SIGNEDIN: ", isSignedIn);
 
 	if (!isLoaded) {
-		return <View className="flex-1 items-center justify-center">
-			<ActivityIndicator  size="large" color = "#0000ff"/>
-		</View>;
+		return (
+			<View className="flex-1 items-center justify-center">
+				<ActivityIndicator size="large" color="#0000ff" />
+			</View>
+		);
 	}
 	return (
 		<Stack>
@@ -20,6 +21,10 @@ export default function Layout() {
 			<Stack.Protected guard={!isSignedIn}>
 				<Stack.Screen name="sign-in" options={{ headerShown: false }} />
 				<Stack.Screen name="sign-up" options={{ headerShown: false }} />
+				<Stack.Screen
+					name="email-verification"
+					options={{ headerShown: false }}
+				/>
 			</Stack.Protected>
 		</Stack>
 	);
