@@ -6,6 +6,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { type Href, Link, useRouter } from "expo-router";
 import { useState } from "react";
 import {
+	ActivityIndicator,
 	Platform,
 	Pressable,
 	StyleSheet,
@@ -26,48 +27,56 @@ export default function SignInScreen() {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	const handleSubmit = async () => {
-		const { error } = await signIn.password({
-			emailAddress,
-			password,
-		});
-		if (error) {
-			console.error(JSON.stringify(error, null, 2));
-			return;
-		}
-
-		if (signIn.status === "complete") {
-			await signIn.finalize({
-				navigate: ({ session, decorateUrl }) => {
-					if (session?.currentTask) {
-						// Handle pending session tasks
-						// See https://clerk.com/docs/guides/development/custom-flows/authentication/session-tasks
-						console.log(session?.currentTask);
-						return;
-					}
-
-					const url = decorateUrl("/");
-					if (url.startsWith("http")) {
-						window.location.href = url;
-					} else {
-						router.push(url as Href);
-					}
-				},
+		setIsLoading(true);
+		try {
+			const { error } = await signIn.password({
+				emailAddress,
+				password,
 			});
-		} else if (signIn.status === "needs_second_factor") {
-			// See https://clerk.com/docs/guides/development/custom-flows/authentication/multi-factor-authentication
-		} else if (signIn.status === "needs_client_trust") {
-			// For other second factor strategies,
-			// see https://clerk.com/docs/guides/development/custom-flows/authentication/client-trust
-			const emailCodeFactor = signIn.supportedSecondFactors.find(
-				(factor) => factor.strategy === "email_code",
-			);
-
-			if (emailCodeFactor) {
-				await signIn.mfa.sendEmailCode();
+			if (error) {
+				console.error(JSON.stringify(error, null, 2));
+				return;
 			}
-		} else {
-			// Check why the sign-in is not complete
-			console.error("Sign-in attempt not complete:", signIn);
+
+			if (signIn.status === "complete") {
+				await signIn.finalize({
+					navigate: ({ session, decorateUrl }) => {
+						if (session?.currentTask) {
+							// Handle pending session tasks
+							// See https://clerk.com/docs/guides/development/custom-flows/authentication/session-tasks
+							console.log(session?.currentTask);
+							return;
+						}
+
+						const url = decorateUrl("/");
+						if (url.startsWith("http")) {
+							window.location.href = url;
+						} else {
+							router.push(url as Href);
+						}
+					},
+				});
+			} else if (signIn.status === "needs_second_factor") {
+				// See https://clerk.com/docs/guides/development/custom-flows/authentication/multi-factor-authentication
+			} else if (signIn.status === "needs_client_trust") {
+				// For other second factor strategies,
+				// see https://clerk.com/docs/guides/development/custom-flows/authentication/client-trust
+				const emailCodeFactor = signIn.supportedSecondFactors.find(
+					(factor) => factor.strategy === "email_code",
+				);
+
+				if (emailCodeFactor) {
+					await signIn.mfa.sendEmailCode();
+				}
+			} else {
+				// Check why the sign-in is not complete
+				console.error("Sign-in attempt not complete:", signIn);
+			}
+		} catch (error) {
+			console.log(JSON.stringify(error, null, 2));
+		}
+		finally {
+			setIsLoading(false);
 		}
 	};
 
@@ -145,7 +154,6 @@ export default function SignInScreen() {
 		<KeyboardAwareScrollView
 			contentContainerStyle={{ flexGrow: 1 }}
 			enableOnAndroid={true}
-			// extraScrollHeight={70}
 			keyboardShouldPersistTaps="handled"
 		>
 			<View className="flex-1 justify-center gap-10 px-6">
@@ -259,11 +267,7 @@ export default function SignInScreen() {
 					>
 						<View className="flex-row items-center justify-center">
 							{isLoading ? (
-								<Ionicons
-									name="refresh"
-									size={22}
-									color={"white"}
-								/>
+								<ActivityIndicator className="text-white"/>
 							) : (
 								<Ionicons
 									name="log-in-outline"
