@@ -13,9 +13,15 @@ export default defineCliConfig({
     autoUpdates: true,
   },
   typegen: {
-    path: './**/*.{ts,tsx,js,jsx}', // glob pattern to your typescript files. Can also be an array of paths
+    path: [
+      '../app/**/*.{ts,tsx,js,jsx}',
+      '../components/**/*.{ts,tsx,js,jsx}',
+      '../lib/**/*.{ts,tsx,js,jsx}',
+      '../hooks/**/*.{ts,tsx,js,jsx}',
+      './**/*.{ts,tsx,js,jsx}', // also scan sanity folder itself
+    ],
     schema: 'schema.json', // path to your schema file, generated with 'sanity schema extract' command
-    generates: './sanity.types.ts', // path to the output file for generated type definitions
+    generates: '../lib/sanity/sanity.types.ts', // path to the output file for generated type definitions
     overloadClientMethods: true, // set to false to disable automatic overloading the sanity client
   },
 })

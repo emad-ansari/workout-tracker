@@ -14,7 +14,7 @@ import {
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-export default function Page() {
+export default function SignUpScreen() {
 	const { signUp, errors, fetchStatus } = useSignUp();
 	const { isSignedIn } = useAuth();
 	const router = useRouter();

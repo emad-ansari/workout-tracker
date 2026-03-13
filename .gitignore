@@ -1,5 +1,6 @@
 # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
+.vscode/
 # dependencies
 node_modules/
 
@@ -41,3 +42,7 @@ app-example
 # generated native folders
 /ios
 /android
+
+# sanity
+.cursor/
+.vercel

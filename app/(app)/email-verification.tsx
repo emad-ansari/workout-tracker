@@ -28,7 +28,7 @@ export default function EmailVerify() {
 				await signUp.finalize({
 					// Redirect the user to the home page after signing up
 					navigate: () => {
-						router.replace("/");
+						router.replace("/(app)/(tabs)");
 					},
 				});
 			} else {
@@ -51,9 +51,9 @@ export default function EmailVerify() {
 				<View className="bg-white rounded-full items-center justify-center w-12 h-12">
 					<TouchableOpacity
 						onPress={async () => {
-							// await signUp.create({});
 							router.replace("/(app)/sign-up");
 						}}
+						style={{ elevation: 6 }}
 					>
 						<Feather name="chevron-left" size={25} />
 					</TouchableOpacity>

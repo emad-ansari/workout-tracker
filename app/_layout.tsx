@@ -24,7 +24,7 @@ export default function RootLayout() {
 					tokenCache={tokenCache}
 				>
 					<StatusBar style="dark" />
-					<Slot />;
+					<Slot />
 				</ClerkProvider>
 			</SafeAreaView>
 		</SafeAreaProvider>
