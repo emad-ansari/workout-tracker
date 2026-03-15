@@ -10,13 +10,7 @@ export const config = {
 };
 export const client = createClient(config);
 
-// Admin level client used for backend
 
-const adminConfig = {
-	...config,
-	token: process.env.SANITY_API_TOKEN,
-};
-export const adminClient = createClient(adminConfig);
 
 // Image Url builder
 const builder = createImageUrlBuilder(config);
