@@ -207,6 +207,14 @@ export type AllSanitySchemaTypes =
   | Geopoint
   | Slug;
 
+// Source: ../app/(app)/(tabs)/active-workout.tsx
+// Variable: findExerciseQuery
+// Query: *[_type == "exercise" && name == $name][0] {	_id,	name}
+export type FindExerciseQueryResult = {
+  _id: string;
+  name: string | null;
+} | null;
+
 // Source: ../app/(app)/(tabs)/exercises.tsx
 // Variable: exerciseQuery
 // Query: *[_type == "exercise"] {...}
@@ -310,9 +318,11 @@ export type SingleExerciseQueryResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
+    '*[_type == "exercise" && name == $name][0] {\n\t_id,\n\tname\n}': FindExerciseQueryResult;
     ' *[_type == "exercise"] {...}': ExerciseQueryResult;
     '*[_type == "workout" && userId == $userId] | order(date desc) {\n\t\t_id,\n\t\tdate,\n\t\tdurationSeconds,\n\t\texercises[] {\n\t\t\texercise-> {\n\t\t\t\t_id,\n\t\t\t\tname\n\t\t\t},\n\t\t\tsets[] {\n\t\t\t\treps,\n\t\t\t\tweight,\n\t\t\t\tweightUnit,\n\t\t\t\t_type, \n\t\t\t\t_key\n\t\t\t},\n\t\t\t_type,\n\t\t\t_key\n\t\t}\n\t}': GetWorkoutsQueryResult;
     '*[_type == "workout" && _id == $workoutId][0] {\n    _id,\n    _type,\n    _createdAt,\n    date,\n    durationSeconds,\n    exercises[] {\n      exercise-> {\n        _id,\n        name,\n        description\n      },\n      sets[] {\n        reps,\n        weight,\n        weightUnit,\n        _type,\n        _key\n      },\n      _type,\n      _key\n    }\n}': GetWorkoutRecordQueryResult;
     '*[_type == "exercise" && _id == $id][0]': SingleExerciseQueryResult;
   }
 }
+

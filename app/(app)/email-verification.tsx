@@ -28,7 +28,7 @@ export default function EmailVerify() {
 				await signUp.finalize({
 					// Redirect the user to the home page after signing up
 					navigate: () => {
-						router.replace("/(app)/(tabs)");
+						router.replace("/");
 					},
 				});
 			} else {

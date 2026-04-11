@@ -1,9 +1,13 @@
 import { HapticTab } from "@/components/haptic-tab";
+import { useUser } from "@clerk/expo";
 import Feather from "@expo/vector-icons/Feather";
 import { Tabs } from "expo-router";
 import React from "react";
+import { Image } from "react-native";
 
 export default function TabLayout() {
+	const { user } = useUser();
+
 	return (
 		<Tabs
 			screenOptions={{
@@ -63,7 +67,15 @@ export default function TabLayout() {
 				options={{
 					title: "Profile",
 					tabBarIcon: ({ color, size }) => (
-						<Feather name="user" color={color} size={size} />
+						<Image
+							source={{
+								uri:
+									user?.imageUrl ??
+									user?.externalAccounts[0]?.imageUrl,
+							}}
+							className="rounded-full"
+							style={{ width: 28, height: 28, borderRadius: 100 }}
+						/>
 					),
 				}}
 			/>

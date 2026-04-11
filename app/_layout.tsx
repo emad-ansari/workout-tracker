@@ -2,9 +2,10 @@ import "@/global.css";
 import { ClerkProvider } from "@clerk/expo";
 import { tokenCache } from "@clerk/expo/token-cache";
 import { Slot } from "expo-router";
-import { StatusBar } from "expo-status-bar";
+import { StatusBar } from "react-native";
+
 import "react-native-reanimated";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export const unstable_settings = {
 	anchor: "(tabs)",
@@ -18,15 +19,13 @@ if (!publishableKey) {
 export default function RootLayout() {
 	return (
 		<SafeAreaProvider>
-			<SafeAreaView className="flex-1">
-				<ClerkProvider
-					publishableKey={publishableKey}
-					tokenCache={tokenCache}
-				>
-					<StatusBar style="dark" />
-					<Slot />
-				</ClerkProvider>
-			</SafeAreaView>
+			<ClerkProvider
+				publishableKey={publishableKey}
+				tokenCache={tokenCache}
+			>
+				<StatusBar barStyle={"dark-content"} />
+				<Slot />
+			</ClerkProvider>
 		</SafeAreaProvider>
 	);
 }
