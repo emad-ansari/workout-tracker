@@ -57,7 +57,7 @@ export const ExerciseSelectionModal = ({ visible, onClose }: Props) => {
 		const filtered = exercises.filter((exercise) =>
 			exercise.name?.toLowerCase().includes(searchQuery.toLowerCase()),
 		);
-        setFilteredExercises(filtered);
+		setFilteredExercises(filtered);
 	}, [searchQuery, exercises]);
 
 	const onRefresh = async () => {
@@ -78,7 +78,7 @@ export const ExerciseSelectionModal = ({ visible, onClose }: Props) => {
 				{/* Header */}
 				<View className="bg-white px-4 pt-4 pb-6 shadow-sm border-b border-gray-100">
 					<View className="flex-row items-center justify-between mb-4">
-						<Text className="texxt-2xl font-bold text-gray-800">
+						<Text className="text-2xl font-bold text-gray-800">
 							Add Exercise
 						</Text>
 						<TouchableOpacity
@@ -92,7 +92,7 @@ export const ExerciseSelectionModal = ({ visible, onClose }: Props) => {
 						Tap any exercise to add it to your workout
 					</Text>
 					{/* Search bar */}
-					<View className="flex-row items-center bg-gray-100 rounded-xl px-4">
+					<View className="flex-row items-center bg-gray-100 rounded-full px-4">
 						<Ionicons name="search" size={20} color="#6B7280" />
 						<TextInput
 							className="flex-1 ml-3 text-gray-800"

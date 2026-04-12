@@ -40,9 +40,7 @@ export default function Layout() {
 				name="exercise-detail"
 				options={{
 					headerShown: false,
-					presentation: "transparentModal",
-					animation: "slide_from_bottom",
-					gestureEnabled: true,
+					presentation: "modal",
 				}}
 			/>
 			<Stack.Screen name="sign-in" options={{ headerShown: false }} />
