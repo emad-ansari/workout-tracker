@@ -66,19 +66,31 @@ export default function TabLayout() {
 				name="profile"
 				options={{
 					title: "Profile",
-					tabBarIcon: ({ color, size }) => (
-						<Image
-							source={{
-								uri:
-									user?.imageUrl ??
-									user?.externalAccounts[0]?.imageUrl,
-							}}
-							className="rounded-full"
-							style={{ width: 28, height: 28, borderRadius: 100 }}
-						/>
-					),
+					tabBarIcon: ({ color, size }) => <ProfileTabBarIcon color={color} size={size} />,
 				}}
 			/>
 		</Tabs>
 	);
+}
+
+function ProfileTabBarIcon({ color, size }: { color: string; size: number }) {
+	const { user } = useUser();
+	const profileImage = user?.externalAccounts?.[0]?.imageUrl || user?.imageUrl;
+
+	if (profileImage) {
+		return (
+			<Image
+				source={{ uri: profileImage }}
+				style={{
+					width: 26,
+					height: 26,
+					borderRadius: 13,
+					borderWidth: 1,
+					borderColor: color,
+				}}
+			/>
+		);
+	}
+
+	return <Feather name="user" color={color} size={size} />;
 }

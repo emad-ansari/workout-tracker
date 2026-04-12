@@ -38,7 +38,9 @@ export default function GoogleSignIn() {
 					// For web, defaults to current path
 					// For native, you must pass a scheme, like AuthSession.makeRedirectUri({ scheme, path })
 					// For more info, see https://docs.expo.dev/versions/latest/sdk/auth-session/#authsessionmakeredirecturioptions
-					redirectUrl: AuthSession.makeRedirectUri(),
+					redirectUrl: AuthSession.makeRedirectUri({
+						path: "/sign-in"
+					}),
 				});
 
 			// If sign in was successful, set the active session
@@ -52,8 +54,8 @@ export default function GoogleSignIn() {
 							console.log(session?.currentTask);
 							return;
 						}
-
-						router.push(decorateUrl("/") as Href);
+                        
+                        // The global useEffect in _layout.tsx will gracefully handle the redirect!
 					},
 				});
 			} else {

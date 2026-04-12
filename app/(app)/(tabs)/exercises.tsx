@@ -66,7 +66,7 @@ const ExercisePage = () => {
 						Discover and master new exercises
 					</Text>
 					{/* Search bar */}
-					<View className="flex-row items-center bg-gray-100 rounded-3xl px-4 py-1 mt-4">
+					<View className="flex-row items-center bg-gray-100 rounded-full px-4 py-1 mt-4">
 						<Ionicons name="search" size={20} color={"#6B7280"} />
 						<TextInput
 							className="flex-1 ml-3 text-gray-800"

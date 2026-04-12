@@ -8,7 +8,7 @@ import "react-native-reanimated";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export const unstable_settings = {
-	anchor: "(tabs)",
+	initialRouteName: "(app)",
 };
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
 

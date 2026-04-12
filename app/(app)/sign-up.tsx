@@ -50,6 +50,8 @@ export default function SignUpScreen() {
 		return null;
 	}
 
+	
+
 	return (
 		<KeyboardAwareScrollView
 			enableOnAndroid={true}
@@ -182,14 +184,6 @@ export default function SignUpScreen() {
 							</Text>
 						</View>
 					</TouchableOpacity>
-
-					{/* Divider */}
-					<View className="flex-row items-center my-4 gap-2 mb-5">
-						<View className="flex-1 h-px bg-gray-200" />
-						<Text className="text-gray-500 text-sm">or</Text>
-						<View className="flex-1 h-px bg-gray-200" />
-					</View>
-					{/* <GoogleSignIn /> */}
 				</View>
 
 				{/* Footer section */}
@@ -199,7 +193,7 @@ export default function SignUpScreen() {
 					</Text>
 					<Link
 						href="/sign-in"
-						className="font-semibold text-blue-600"
+						className="font-semibold text-blue-600 ml-1"
 					>
 						<Text>Sign In</Text>
 					</Link>

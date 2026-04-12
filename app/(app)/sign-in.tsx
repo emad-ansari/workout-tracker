@@ -40,20 +40,8 @@ export default function SignInScreen() {
 
 			if (signIn.status === "complete") {
 				await signIn.finalize({
-					navigate: ({ session, decorateUrl }) => {
-						if (session?.currentTask) {
-							// Handle pending session tasks
-							// See https://clerk.com/docs/guides/development/custom-flows/authentication/session-tasks
-							console.log(session?.currentTask);
-							return;
-						}
-
-						const url = decorateUrl("/");
-						if (url.startsWith("http")) {
-							window.location.href = url;
-						} else {
-							router.push(url as Href);
-						}
+					navigate: async () => {
+						router.replace("/(app)/(tabs)/index" as Href);
 					},
 				});
 			} else if (signIn.status === "needs_second_factor") {
@@ -74,8 +62,7 @@ export default function SignInScreen() {
 			}
 		} catch (error) {
 			console.log(JSON.stringify(error, null, 2));
-		}
-		finally {
+		} finally {
 			setIsLoading(false);
 		}
 	};
@@ -267,7 +254,7 @@ export default function SignInScreen() {
 					>
 						<View className="flex-row items-center justify-center">
 							{isLoading ? (
-								<ActivityIndicator className="text-white"/>
+								<ActivityIndicator className="text-white" />
 							) : (
 								<Ionicons
 									name="log-in-outline"
