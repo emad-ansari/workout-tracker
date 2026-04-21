@@ -19,10 +19,10 @@ const WorkoutPage = () => {
 				<View className="flex-1 px-6">
 					{/* Header */}
 					<View className="pt-8 pb-6">
-						<Text className="text-2xl font-bold text-gray-900 mb-2">
+						<Text className="text-2xl font-bold text-gray-900 mb-2 ">
 							Ready to Train?
 						</Text>
-						<Text className="text-md text-gray-500">
+						<Text className="text-md text-gray-500 font-sans">
 							Start your workout session
 						</Text>
 					</View>
@@ -43,7 +43,7 @@ const WorkoutPage = () => {
 								<Text className="text-lg font-semibold text-gray-900">
 									Start Workout
 								</Text>
-								<Text className="text-gray-500 text-base">
+								<Text className="text-gray-500 text-base font-sans">
 									Begin your training session
 								</Text>
 							</View>

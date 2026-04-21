@@ -1,6 +1,11 @@
 import "@/global.css";
 import { ClerkProvider } from "@clerk/expo";
 import { tokenCache } from "@clerk/expo/token-cache";
+import {
+	Inter_400Regular,
+	Inter_600SemiBold,
+	useFonts,
+} from "@expo-google-fonts/inter";
 import { Slot } from "expo-router";
 import { StatusBar } from "react-native";
 
@@ -17,6 +22,14 @@ if (!publishableKey) {
 }
 
 export default function RootLayout() {
+	
+	const [fontsLoaded] = useFonts({
+		Inter_400Regular,
+		Inter_600SemiBold,
+	});
+
+	if (!fontsLoaded) return null;
+
 	return (
 		<SafeAreaProvider>
 			<ClerkProvider

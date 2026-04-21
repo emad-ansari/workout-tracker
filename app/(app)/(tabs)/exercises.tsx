@@ -90,8 +90,9 @@ const ExercisePage = () => {
 				</View>
 
 				{/* Exercise List */}
-				<View className="flex-1 p-6  ">
+				<View className="flex-1 px-6">
 					<FlatList
+						showsVerticalScrollIndicator={false}
 						data={filteredExercises}
 						renderItem={({ item }: { item: Exercise }) => (
 							<ExerciseCard

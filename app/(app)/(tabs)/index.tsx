@@ -70,43 +70,46 @@ export default function HomePage() {
 			>
 				{/* Header */}
 				<View className="px-6 pt-8 pb-6">
-					<Text className="text-lg text-gray-600">Welcome back,</Text>
-					<Text className="text-3xl font-bold text-gray-900">
+					<Text className="text-lg text-gray-600 font-sans">
+						Welcome back,
+					</Text>
+					<Text className="text-3xl font-bold text-gray-900 ">
 						{user?.firstName || "Athelete"}! 💪
 					</Text>
 				</View>
 				{/* Stats Overview */}
-				<View className="px-6 mb-6">
-					<View className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-						<Text className="text-lg  font-semibold text-gray-900 mb-4">
+				<View className="px-6 mb-6 rounded">
+					<View className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+						<Text className="text-lg  font-semibold text-gray-900 mb-4 font-bold upper">
 							Your Stats
 						</Text>
 
-						<View className="flex-row justify-between">
-							<View className="items-center flex-1">
-								<Text className="text-2xl font-bold text-blue-600">
+						<View className="flex-row justify-between gap-2">
+							<View className="items-center flex-1 bg-blue-500/20 rounded-3xl p-4 gap-2">
+								<Text className="text-xs  text-center  font-sans uppercase text-blue-600 tracking-[1px]">
+									Workouts
+								</Text>
+								<Text className="text-2xl font-bold text-black font-sans">
 									{totalWorkouts}
 								</Text>
-								<Text className="text-sm text-gray-500 text-center">
-									Total {"\n"} Workouts
-								</Text>
 							</View>
-							<View className="items-center flex-1">
-								<Text className="text-2xl font-bold text-green-600">
+
+							<View className="items-center flex-1 bg-green-500/20 rounded-3xl p-4 gap-2">
+								<Text className="text-xs  text-center uppercase tracking-[1px] text-green-600">
+									Duration
+								</Text>
+								<Text className="text-2xl font-bold text-black">
 									{formatDuration(totalDuration)}
 								</Text>
-								<Text className="text-sm text-gray-500 text-center">
-									Total {"\n"} Duration
-								</Text>
 							</View>
-							<View className="items-center flex-1">
-								<Text className="text-2xl font-bold text-purple-600">
+							<View className="items-center flex-1 rounded-3xl p-4 bg-purple-500/20 gap-2">
+								<Text className="text-center text-xs text-purple-600 uppercase tracking-[1px]">
+									Average Duration
+								</Text>
+								<Text className="text-2xl font-bold text-black">
 									{averageDuration > 0
 										? formatDuration(averageDuration)
 										: "0m"}
-								</Text>
-								<Text className="text-center text-sm text-gray-500">
-									Average {"\n"} Duration
 								</Text>
 							</View>
 						</View>

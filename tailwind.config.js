@@ -7,7 +7,12 @@ module.exports = {
 	presets: [require("nativewind/preset")],
 	darkMode: "class",
 	theme: {
-		extend: {},
+		extend: {
+			fontFamily: {
+				sans: ["Inter_400Regular"],
+				bold: ["Inter_600SemiBold"],
+			},
+		},
 	},
 	plugins: [],
 };

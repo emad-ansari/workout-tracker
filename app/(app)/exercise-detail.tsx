@@ -133,7 +133,7 @@ export default function ExerciseDetail() {
 					{/* title and difficulty */}
 					<View className="flex-row items-start justify-between mb-6">
 						<View className="flex-1 mr-4">
-							<Text className="text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">
+							<Text className="text-3xl font-bold text-slate-900 mb-3 tracking-tight">
 								{exercise?.name}
 							</Text>
 							<View
@@ -153,10 +153,10 @@ export default function ExerciseDetail() {
 
 					{/* description */}
 					<View className="mb-8">
-						<Text className="text-2xl font-bold text-slate-900 mb-3 tracking-tight">
+						<Text className="text-xl font-bold text-slate-900 mb-3 tracking-tight">
 							Description
 						</Text>
-						<Text className="text-slate-600 text-lg leading-relaxed">
+						<Text className="text-slate-600 text-lg leading-relaxed font-sans ">
 							{exercise?.description ||
 								"No description available for this exercise."}
 						</Text>
@@ -165,7 +165,7 @@ export default function ExerciseDetail() {
 					{/* Video section */}
 					{exercise?.videoUrl && (
 						<View className="mb-8">
-							<Text className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">
+							<Text className="text-xl font-bold text-slate-900 mb-4 tracking-tight ">
 								Video Tutorial
 							</Text>
 							<TouchableOpacity
