@@ -1,6 +1,6 @@
-# FitNova - Professional Workout Tracker 🏋️‍♂️
+# NexLiftr - Professional Workout Tracker 🏋️‍♂️
 
-FitNova is a premium, feature-rich workout tracking application built with **React Native** and **Expo**. It empowers users to plan, track, and analyze their fitness journey with a sleek, modern interface.
+NexLiftr is a premium, feature-rich workout tracking application built with **React Native** and **Expo**. It empowers users to plan, track, and analyze their fitness journey with a sleek, modern interface.
 
 [![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)](https://expo.dev/)
 [![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactnative.dev/)
@@ -12,12 +12,12 @@ FitNova is a premium, feature-rich workout tracking application built with **Rea
 
 ## 📱 App Screenshots
 
-| Home Dashboard | Exercise Library | Exercise Details |
-| :-: | :-: | :-: |
+|                    Home Dashboard                    |                           Exercise Library                            |                           Exercise Details                            |
+| :--------------------------------------------------: | :-------------------------------------------------------------------: | :-------------------------------------------------------------------: |
 | ![Home Screen](assets/screen-images/home-screen.png) | ![Exercise Library](assets/screen-images/exercise-library-screen.png) | ![Exercise Details](assets/screen-images/exercise-details-screen.png) |
 
-| Plan Workout | Active Tracking | User Profile |
-| :-: | :-: | :-: |
+|                         Plan Workout                          |                           Active Tracking                           |                         User Profile                          |
+| :-----------------------------------------------------------: | :-----------------------------------------------------------------: | :-----------------------------------------------------------: |
 | ![Plan Workout](assets/screen-images/plan-workout-screen.png) | ![Workout History](assets/screen-images/workout-history-screen.png) | ![User Profile](assets/screen-images/user-profile-screen.png) |
 
 ---
@@ -58,18 +58,21 @@ FitNova is a premium, feature-rich workout tracking application built with **Rea
 ### Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/your-username/workout-tracker.git
    cd workout-tracker
    ```
 
 2. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 3. **Set up Environment Variables:**
    Create a `.env` file in the root directory and add your Clerk and Sanity credentials:
+
    ```env
    EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_key
    EXPO_PUBLIC_SANITY_PROJECT_ID=your_sanity_id
@@ -77,6 +80,7 @@ FitNova is a premium, feature-rich workout tracking application built with **Rea
    ```
 
 4. **Start the development server:**
+
    ```bash
    npm run start
    ```
